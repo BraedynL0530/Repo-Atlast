@@ -1,4 +1,4 @@
-package cordinator
+package jobs
 
 import (
 	"time"
@@ -9,10 +9,7 @@ type JobType string
 
 const (
 	JobTypeTreeSitter  JobType = "treesitter"  // sent to Python bridge
-    JobTypeChurn       JobType = "churn"        // handled in Go
-    JobTypeDeps        JobType = "deps"
-    JobTypeSecrets     JobType = "secrets"
-    JobTypeDocs        JobType = "docs"
+	JobTypeScan		   JobType = "scan"
 )
 
 type JobStatus string
@@ -26,16 +23,15 @@ const (
 )
 
 type File struct {
-	Path	   String
-	Language   String
+	Path	   string
+	Language   string
 	SizeBytes  int64
-	Hash	   String
+	Hash	   string
 	Context    []byte
 }
 
 type Job struct {
-	Id		 String
-	ScanId   String
+	Id		 string
 	Type	 JobType
 	File	 File
 	Prioity  int
@@ -43,7 +39,7 @@ type Job struct {
 }
 
 type Warning struct {
-    Severity string    // "high" | "medium" | "low" | "info"
+    Severity string    // "high" | "medium" | "low" 
     Code     string    // machine-readable: "no-tests", "god-file", "secret-found"
     Message  string    // human-readable
     Line     int       // 0 if not line-specific
