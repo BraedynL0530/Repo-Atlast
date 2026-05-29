@@ -9,7 +9,9 @@ type JobType string
 
 const (
 	JobTypeTreeSitter  JobType = "treesitter"  // sent to Python bridge
-	JobTypeScan		   JobType = "scan"
+	JobTypeDeps        JobType = "deps"
+    JobTypeSecrets     JobType = "secrets"
+    JobTypeDocs        JobType = "docs"
 )
 
 type JobStatus string
