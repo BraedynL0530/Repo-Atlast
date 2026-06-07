@@ -34,7 +34,7 @@ def ast_from_file(file_path:str) -> response | None:
             symbols=True,  # off by default, useful for dead code later
         )
         result = ts.process(source, config)
-        pass
+        return result
     except Exception:
         return None
 
